@@ -90,6 +90,7 @@ function setup() {
 	openBucketA.buttonMode  = true;
 	openBucketA.defaultCursor  = 'pointer';
 	openBucketA.on('mousedown',bucketA_Anim);
+	openBucketA.on('touchstart',bucketA_Anim);
 	openBucketA.anchor.set(0.5);
 	openBucketA.animationSpeed = .3;
 	openBucketA.loop = false;
@@ -141,6 +142,7 @@ function setup() {
 	// BUCKET 2
 	openBucketB = new PIXI.AnimatedSprite(bucketSheet.open);
 	openBucketB.on('mousedown',bucketB_Anim);
+	openBucketB.on('touchstart',bucketA_Anim);
 	openBucketB.interactive   = true;
 	openBucketB.buttonMode  = true;
 	openBucketB.defaultCursor  = 'pointer';
@@ -199,6 +201,7 @@ function setup() {
 	// BUCKET 3
 	openBucketC = new PIXI.AnimatedSprite(bucketSheet.open);
 	openBucketC.on('mousedown',bucketC_Anim);
+	openBucketC.on('touchstart',bucketA_Anim);
 	openBucketC.interactive   = true;
 	openBucketC.buttonMode  = true;
 	openBucketC.defaultCursor  = 'pointer';
