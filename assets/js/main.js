@@ -21,6 +21,8 @@ let Application = PIXI.Application,
 
 let bucketSheet = [];
 
+PIXI.settings.RESOLUTION = window.devicePixelRatio || 1; // added this
+
 let game = new Application({width : 256, height : 256});
 
 // game.renderer.view.style.position = "absolute";
@@ -47,7 +49,6 @@ loader.add("assets/images/game-background.jpg")
 	  .load(setup);
 
 function setup() {
-
 	if (window.mobileCheck()) {
 		background = new Sprite(resources['assets/images/mobile-background.jpg'].texture);
 		background.width = 360;
@@ -58,6 +59,7 @@ function setup() {
 		background.width = 1920;
 		background.height = 1080;
 	}
+
 
 	let bucket_image =  new PIXI.BaseTexture.from(loader.resources['bucket'].url);
 
@@ -432,8 +434,8 @@ function setup() {
 
 	completeLoad();
 
-	if (window.mobileDevices()) {
-		mobileDevices();
+	if (window.mobileCheck()) {
+		mobileDevicesResize();
 	}
 	animatedArrow(openBucketA_arrow);
 	animatedArrow(openBucketB_arrow);
@@ -441,37 +443,38 @@ function setup() {
 
 }
 
-function mobileDevices(){
+function mobileDevicesResize(){
 
 	bgGlow.alpha = 0;
 	openBucketA.scale.set(0.35,0.35);
-	closeBucketA.scale.set(0.35,0.35);
+	openBucketB.scale.set(0.35,0.35);
+	openBucketC.scale.set(0.35,0.35);
+	openBucketA.x = 70;
+	openBucketB.x = 185;
+	openBucketC.x = 300;
+	openBucketA.y = 300;
+	openBucketB.y = 300;
+	openBucketC.y = 300;
+	// closeBucketA.scale.set(0.35,0.35);
 	openBucketAMove.scale.set(0.35,0.35);
 	openBucketALight.scale.set(0.35,0.35);
 	openBucketAShadow.scale.set(0.35,0.35);
 	openBucketA_arrow.scale.set(0.35,0.35);
 
-	openBucketB.scale.set(0.35,0.35);
+	// openBucketB.scale.set(0.35,0.35);
 	closeBucketB.scale.set(0.35,0.35);
 	openBucketBMove.scale.set(0.35,0.35);
 	openBucketBLight.scale.set(0.35,0.35);
 	openBucketBShadow.scale.set(0.35,0.35);
 	openBucketB_arrow.scale.set(0.35,0.35);
 
-	openBucketC.scale.set(0.35,0.35);
+	// openBucketC.scale.set(0.35,0.35);
 	closeBucketC.scale.set(0.35,0.35);
 	openBucketCMove.scale.set(0.35,0.35);
 	openBucketCLight.scale.set(0.35,0.35);
 	openBucketCShadow.scale.set(0.35,0.35);
 	openBucketC_arrow.scale.set(0.35,0.35);
 
-	openBucketA.x = game.view.width / 5.5;
-	openBucketB.x = game.view.width /2;
-	openBucketC.x = game.view.width /1.2;
-
-	openBucketA.y = game.view.height / 2.2;
-	openBucketB.y = game.view.height / 2.2;
-	openBucketC.y = game.view.height / 2.2;
 
 	openBucketAShadow.x = openBucketA.x + 15;
 	openBucketAShadow.y = openBucketA.y + 50;
