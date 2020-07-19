@@ -243,7 +243,7 @@ function setup() {
 	openBucketA_arrow.x = openBucketA.x + 3;
 	openBucketA_arrow.y = openBucketA.y - 200;
 	openBucketA_arrow.play();
-	animatedArrow(openBucketA_arrow);
+
 
 	A_Bucket = new PIXI.Container();
 	A_Bucket.addChild(openBucketAShadow,openBucketAGem,closeBucketA,openBucketALight,openBucketA,openBucketA_arrow,openBucketAMove);
@@ -309,7 +309,7 @@ function setup() {
 	openBucketB_arrow.x = openBucketB.x + 3;
 	openBucketB_arrow.y = openBucketB.y - 200;
 	openBucketB_arrow.play();
-	animatedArrow(openBucketB_arrow);
+
 
 	B_Bucket = new PIXI.Container();
 	B_Bucket.addChild(openBucketBShadow,openBucketBGem,closeBucketB,openBucketBLight,openBucketB,openBucketB_arrow,openBucketBMove);
@@ -375,7 +375,7 @@ function setup() {
 	openBucketC_arrow.x = openBucketC.x + 3;
 	openBucketC_arrow.y = openBucketC.y - 200;
 	openBucketC_arrow.play();
-	animatedArrow(openBucketC_arrow);
+
 
 
 	C_Bucket = new PIXI.Container();
@@ -432,29 +432,66 @@ function setup() {
 
 	completeLoad();
 
-	openBucketA.scale.set(0.3,0.3);
-	closeBucketA.scale.set(0.3,0.3);
-	openBucketAMove.scale.set(0.3,0.3);
-	openBucketALight.scale.set(0.3,0.3);
-	openBucketAShadow.scale.set(0.3,0.3);
-	openBucketA_arrow.scale.set(0.3,0.3);
-
-	openBucketB.scale.set(0.3,0.3);
-	closeBucketB.scale.set(0.3,0.3);
-	openBucketBMove.scale.set(0.3,0.3);
-	openBucketBLight.scale.set(0.3,0.3);
-	openBucketBShadow.scale.set(0.3,0.3);
-	openBucketB_arrow.scale.set(0.3,0.3);
-
-	openBucketC.scale.set(0.3,0.3);
-	closeBucketC.scale.set(0.3,0.3);
-	openBucketCMove.scale.set(0.3,0.3);
-	openBucketCLight.scale.set(0.3,0.3);
-	openBucketCShadow.scale.set(0.3,0.3);
-	openBucketC_arrow.scale.set(0.3,0.3);
+	mobileDevices();
+	animatedArrow(openBucketA_arrow);
+	animatedArrow(openBucketB_arrow);
+	animatedArrow(openBucketC_arrow);
 
 }
 
+function mobileDevices(){
+
+	bgGlow.alpha = 0;
+	openBucketA.scale.set(0.35,0.35);
+	closeBucketA.scale.set(0.35,0.35);
+	openBucketAMove.scale.set(0.35,0.35);
+	openBucketALight.scale.set(0.35,0.35);
+	openBucketAShadow.scale.set(0.35,0.35);
+	openBucketA_arrow.scale.set(0.35,0.35);
+
+	openBucketB.scale.set(0.35,0.35);
+	closeBucketB.scale.set(0.35,0.35);
+	openBucketBMove.scale.set(0.35,0.35);
+	openBucketBLight.scale.set(0.35,0.35);
+	openBucketBShadow.scale.set(0.35,0.35);
+	openBucketB_arrow.scale.set(0.35,0.35);
+
+	openBucketC.scale.set(0.35,0.35);
+	closeBucketC.scale.set(0.35,0.35);
+	openBucketCMove.scale.set(0.35,0.35);
+	openBucketCLight.scale.set(0.35,0.35);
+	openBucketCShadow.scale.set(0.35,0.35);
+	openBucketC_arrow.scale.set(0.35,0.35);
+
+	openBucketA.x = game.view.width / 5.5;
+	openBucketB.x = game.view.width /2;
+	openBucketC.x = game.view.width /1.2;
+
+	openBucketA.y = game.view.height / 2.2;
+	openBucketB.y = game.view.height / 2.2;
+	openBucketC.y = game.view.height / 2.2;
+
+	openBucketAShadow.x = openBucketA.x + 15;
+	openBucketAShadow.y = openBucketA.y + 50;
+
+	openBucketBShadow.x = openBucketB.x + 15;
+	openBucketBShadow.y = openBucketB.y + 50;
+
+	openBucketCShadow.x = openBucketC.x + 15;
+	openBucketCShadow.y = openBucketC.y + 50;
+
+
+	openBucketC_arrow.x = openBucketC.x + 3;
+	openBucketC_arrow.y = openBucketC.y - 80;
+
+	openBucketB_arrow.x = openBucketB.x + 3;
+	openBucketB_arrow.y = openBucketB.y - 80;
+
+	openBucketA_arrow.x = openBucketA.x + 3;
+	openBucketA_arrow.y = openBucketA.y - 80;
+
+
+}
 
 function animatedArrow(obj) {
 	createjs.Tween.get(obj,{loop : true})
