@@ -70,6 +70,12 @@ function setup() {
 	let arrow_image = new PIXI.BaseTexture.from(loader.resources['arrow'].url);
 
 
+	bucketSheet['logo'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(495,637,292,98)),
+	];
+
+
+
 	bucketSheet['open'] = [
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(994,344,260,324)),
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(725,301,265,335)),
@@ -82,6 +88,7 @@ function setup() {
 	bucketSheet['soundOn'] = [
 		new PIXI.Texture(gameui , new PIXI.Rectangle(329,789,61,62)),
 	];
+
 
 
 	bucketSheet['soundOff'] = [
@@ -458,9 +465,13 @@ function setup() {
 	betTitle.alpha = 0.8;
 
 
+	gameLogo = new PIXI.AnimatedSprite(bucketSheet.logo);
+	gameLogo.x = window.innerWidth / 3.5;
+	gameLogo.y = 10;
+
 	uiContainer = new PIXI.Container();
 
-	uiContainer.addChild(rightArrowBtnOn,rightArrowBtnOff,rightArrowTxt , leftArrowBtnOn , leftArrowBtnOff , leftArrowTxt , betTitle)
+	uiContainer.addChild(rightArrowBtnOn,rightArrowBtnOff,rightArrowTxt , leftArrowBtnOn , leftArrowBtnOff , leftArrowTxt , betTitle , gameLogo)
 
 
 	game.stage.addChild(background,bgGlow,uiContainer,A_Bucket,B_Bucket,C_Bucket);
@@ -572,6 +583,11 @@ function mobileDevicesResize(){
 	betTitle.y = 120;
 	betTitle.style.fontSize = 13;
 	betTitle.style.fill = '#c19358';
+
+
+	gameLogo.x = 70;
+	gameLogo.y = 30;
+	gameLogo.scale.set(0.7,0.7)
 
 
 }
