@@ -10,18 +10,48 @@ canvas {
 body {
 	text-align: center;
 	background: url('../images/bodyBg.jpg');
-	/*background-size: cover;*/
-/*	background-repeat: no-repeat;*/
 	height: 100vh;
 }
 
   canvas {
     
     position: absolute;
-        top: 50%;
-        left: 50%;
-        max-width: 100%;
-        max-height: 100%;
-        -ms-transform: translate(-50%,-50%);
-        transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 3;
+  }
+
+  .gameLoading {
+  	background: url('../images/THIMBLES.jpg');
+  	position: absolute;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center top;
+  	z-index: 5;
+  	height: 100vh;
+  	width: 100%;
+  }
+
+  .gameLoading button {
+  	position: absolute;
+  	background-color: #01a3fb!important;
+  	color: white;
+  	width: 300px;
+  	border-radius: 100px;
+  	border:none;
+  	font-weight: 600;
+  	font-size: 1em;
+  	padding: 50px;
+  	padding: 20px;
+  	top: 80%;
+  	left: 50%;
+  	max-width: 100%;
+  	max-height: 100%;
+  	-ms-transform: translate(-50%,-50%);
+  	transform: translate(-50%,-50%);
+  	cursor: pointer;
   }

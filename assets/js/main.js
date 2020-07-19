@@ -1,3 +1,8 @@
+document.getElementById("play").addEventListener("click",hideLoading);
+
+function hideLoading(){
+	document.querySelector(".gameLoading").style.display="none";
+}
 
 window.mobileCheck = function() {
   let check = false;
@@ -49,6 +54,11 @@ loader.add("assets/images/game-background.jpg")
 	  .load(setup);
 
 function setup() {
+
+	soundID  = "BackgroundTrack";
+	createjs.Sound.registerSound("assets/track/MedievalTrack.mp3", soundID);
+
+
 	if (window.mobileCheck()) {
 		background = new Sprite(resources['assets/images/mobile-background.jpg'].texture);
 		background.width = 360;
@@ -484,6 +494,7 @@ function setup() {
 	animatedArrow(openBucketA_arrow);
 	animatedArrow(openBucketB_arrow);
 	animatedArrow(openBucketC_arrow);
+
 
 }
 
@@ -1481,6 +1492,11 @@ function ArrowHoverOff(){
 	this.alpha = 1;
 }
 
+
+function playTrack() {
+	createjs.Sound.play(soundID,{loop:-1});
+	createjs.Sound.setVolume(0.2);
+}
 
 
 window.onresize = resize;
