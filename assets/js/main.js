@@ -432,7 +432,9 @@ function setup() {
 
 	completeLoad();
 
-	mobileDevices();
+	if (window.mobileDevices()) {
+		mobileDevices();
+	}
 	animatedArrow(openBucketA_arrow);
 	animatedArrow(openBucketB_arrow);
 	animatedArrow(openBucketC_arrow);
