@@ -1,3 +1,4 @@
+
 let size = [1990,1080];
 var ratio = size[0] / size[1];
 // Aliases
@@ -19,7 +20,9 @@ game.maxFPS = 59.99;
 game.stage;
 
 loader.add("assets/images/game-background.jpg")
+	  .add("glow","assets/images/bg-hd-glow.png")
 	  .add("bucket","assets/images/bucket-HD.png")
+	  .add("ui","assets/images/game-ui.png")
 	  .add("arrow","assets/images/arrow-HD.png")
 	  .load(setup);
 
@@ -29,6 +32,10 @@ function setup() {
 	background.height = 1080;
 
 	let bucket_image =  new PIXI.BaseTexture.from(loader.resources['bucket'].url);
+
+	let gameui = new PIXI.BaseTexture.from(loader.resources['ui'].url);
+
+	let backgroundGlow = new PIXI.BaseTexture.from(loader.resources['glow'].url);
 
 	let arrow_image = new PIXI.BaseTexture.from(loader.resources['arrow'].url);
 
@@ -42,6 +49,70 @@ function setup() {
 	];
 
 
+	bucketSheet['soundOn'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(329,789,61,62)),
+	];
+
+
+	bucketSheet['soundOff'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(0,850,61,62)),
+	];
+
+
+	bucketSheet['help'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(123,849,61,62)),
+	];
+
+
+	bucketSheet['circleBtn'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(391,787,61,62)),
+	];
+
+
+	bucketSheet['arrowBtnOn'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(214,786,115,102)),
+	];
+
+
+
+	bucketSheet['arrowBtnOff'] = [
+		new PIXI.Texture(gameui , new PIXI.Rectangle(779,806,115,102)),
+	];
+
+
+	bucketSheet['glow'] = [
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(258,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(514,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(770,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1026,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1282,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1538,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1794,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2050,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2306,2,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(258,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(514,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(770,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1026,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1282,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1538,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1794,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2050,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2306,144,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(258,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(514,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(770,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1026,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1282,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1538,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(1794,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2050,286,252,138)),
+		new PIXI.Texture(backgroundGlow , new PIXI.Rectangle(2306,286,252,138)),
+	];
+
 	bucketSheet['close'] = [
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(1592,2,294,297)),
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(1326,334,288,311)),
@@ -50,10 +121,14 @@ function setup() {
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(994,344,260,324)),
 	];
 
-
 	bucketSheet['bucketLight'] = [
 		new PIXI.Texture(bucket_image , new PIXI.Rectangle(2,2,435,478)),
 	];
+
+	bucketSheet['bucketGem'] = [
+		new PIXI.Texture(bucket_image , new PIXI.Rectangle(909,670,147,166)),
+	];
+
 
 
 	bucketSheet['bucketMoving'] = [
@@ -97,6 +172,12 @@ function setup() {
 	openBucketA.x = game.view.width / 5.5;
 	openBucketA.y = game.view.height / 2.4;
 
+	openBucketAGem = new PIXI.AnimatedSprite(bucketSheet.bucketGem);
+	openBucketAGem.anchor.set(0.5);
+	openBucketAGem.x = openBucketA.x;
+	openBucketAGem.y = game.view.height / 2;
+	openBucketAGem.alpha = 0;
+
 	closeBucketA = new PIXI.AnimatedSprite(bucketSheet.close);
 	closeBucketA.alpha = 0;
 	closeBucketA.anchor.set(0.5);
@@ -136,7 +217,7 @@ function setup() {
 	animatedArrow(openBucketA_arrow);
 
 	A_Bucket = new PIXI.Container();
-	A_Bucket.addChild(openBucketAShadow,closeBucketA,openBucketALight,openBucketA,openBucketA_arrow,openBucketAMove);
+	A_Bucket.addChild(openBucketAShadow,openBucketAGem,closeBucketA,openBucketALight,openBucketA,openBucketA_arrow,openBucketAMove);
 
 
 	// BUCKET 2
@@ -151,6 +232,14 @@ function setup() {
 	openBucketB.loop = false;
 	openBucketB.x = game.view.width /2.75;
 	openBucketB.y = game.view.height / 2.4;
+
+
+	openBucketBGem = new PIXI.AnimatedSprite(bucketSheet.bucketGem);
+	openBucketBGem.anchor.set(0.5);
+	openBucketBGem.x = openBucketB.x;
+	openBucketBGem.y = game.view.height / 2;
+	openBucketBGem.alpha = 0;
+
 
 	closeBucketB = new PIXI.AnimatedSprite(bucketSheet.close);
 	closeBucketB.alpha = 0;
@@ -194,7 +283,7 @@ function setup() {
 	animatedArrow(openBucketB_arrow);
 
 	B_Bucket = new PIXI.Container();
-	B_Bucket.addChild(openBucketBShadow,closeBucketB,openBucketBLight,openBucketB,openBucketB_arrow,openBucketBMove);
+	B_Bucket.addChild(openBucketBShadow,openBucketBGem,closeBucketB,openBucketBLight,openBucketB,openBucketB_arrow,openBucketBMove);
 
 
 
@@ -210,6 +299,13 @@ function setup() {
 	openBucketC.loop = false;
 	openBucketC.x = game.view.width /1.83;
 	openBucketC.y = game.view.height / 2.4;
+
+	openBucketCGem = new PIXI.AnimatedSprite(bucketSheet.bucketGem);
+	openBucketCGem.anchor.set(0.5);
+	openBucketCGem.x = openBucketC.x;
+	openBucketCGem.y = game.view.height / 2;
+	openBucketCGem.alpha = 0;
+	
 
 	closeBucketC = new PIXI.AnimatedSprite(bucketSheet.close);
 	closeBucketC.alpha = 0;
@@ -254,13 +350,56 @@ function setup() {
 
 
 	C_Bucket = new PIXI.Container();
-	C_Bucket.addChild(openBucketCShadow,closeBucketC,openBucketCLight,openBucketC,openBucketC_arrow,openBucketCMove);
-
-
+	C_Bucket.addChild(openBucketCShadow,openBucketCGem,closeBucketC,openBucketCLight,openBucketC,openBucketC_arrow,openBucketCMove);
 
 	let arrow =  new PIXI.BaseTexture.from(loader.resources['arrow'].url);
 
-	game.stage.addChild(background,A_Bucket,B_Bucket,C_Bucket);
+	bgGlow = new PIXI.AnimatedSprite(bucketSheet.glow);
+	bgGlow.animationSpeed = .2;
+	bgGlow.alpha = 0.8;
+	bgGlow.scale.set(5.14,5.14);
+	bgGlow.x = 60;
+	bgGlow.y = 130;
+	bgGlow.play();
+
+
+
+
+
+	soundOn = new PIXI.AnimatedSprite(bucketSheet.soundOn);
+	soundOff = new PIXI.AnimatedSprite(bucketSheet.soundOff);
+	help = new PIXI.AnimatedSprite(bucketSheet.help);
+	circleBtn = new PIXI.AnimatedSprite(bucketSheet.circleBtn);
+
+	rightArrowBtnOn = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOn);
+	rightArrowBtnOff = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOff);
+
+	rightArrowBtnOn.scale.set(1.1,1.1)
+	rightArrowBtnOn.x = 936;
+	rightArrowBtnOn.y = 926;
+	// rightArrowBtnOn.alpha = 0;
+
+	rightArrowBtnOff.scale.set(1.1,1.1)
+	rightArrowBtnOff.x = rightArrowBtnOn.x;
+	rightArrowBtnOff.y = rightArrowBtnOn.y;
+	rightArrowBtnOff.interactive   = true;
+	rightArrowBtnOff.buttonMode  = true;
+	rightArrowBtnOff.defaultCursor  = 'pointer';
+	rightArrowBtnOff.on('mousedown',ArrowHoverOn);
+	rightArrowBtnOff.on('mouseup',ArrowHoverOff);
+	rightArrowBtnOff.on('touchstart',ArrowHoverOn);
+	rightArrowBtnOff.on('touchend',ArrowHoverOff);
+	let rightArrowTxt = new PIXI.Text('MAX',{fontFamily : 'Arial', fontSize: 24, fill : 'black', align : 'center'});
+	rightArrowTxt.x = rightArrowBtnOn.x + 30;
+	rightArrowTxt.y = rightArrowBtnOn.y + 42;
+
+
+
+	uiContainer = new PIXI.Container();
+	uiContainer.addChild(rightArrowBtnOn,rightArrowBtnOff,rightArrowTxt)
+
+
+	game.stage.addChild(background,bgGlow,A_Bucket,B_Bucket,C_Bucket,uiContainer);
 
 	completeLoad();
 
@@ -795,6 +934,16 @@ function resize() {
     game.renderer.view.style.width = w + 'px';
     game.renderer.view.style.height = h + 'px';
 }
+
+function ArrowHoverOn(){
+	this.alpha = 0;
+}
+
+function ArrowHoverOff(){
+	this.alpha = 1;
+}
+
+
 
 window.onresize = resize;
 
