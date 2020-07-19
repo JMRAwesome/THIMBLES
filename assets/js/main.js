@@ -449,31 +449,39 @@ function mobileDevicesResize(){
 	openBucketA.scale.set(0.35,0.35);
 	openBucketB.scale.set(0.35,0.35);
 	openBucketC.scale.set(0.35,0.35);
-	openBucketA.x = 70;
-	openBucketB.x = 185;
-	openBucketC.x = 300;
+	openBucketA.x = 65;
+	openBucketB.x = 180;
+	openBucketC.x = 295;
+
 	openBucketA.y = 300;
 	openBucketB.y = 300;
 	openBucketC.y = 300;
-	// closeBucketA.scale.set(0.35,0.35);
+	closeBucketA.scale.set(0.35,0.35);
 	openBucketAMove.scale.set(0.35,0.35);
 	openBucketALight.scale.set(0.35,0.35);
-	openBucketAShadow.scale.set(0.35,0.35);
+	openBucketAShadow.scale.set(0.5,0.5);
 	openBucketA_arrow.scale.set(0.35,0.35);
+	openBucketAMove.scale.set(0.35,0.35);
+	// openBucketAMove.alpha = 1;
+
 
 	// openBucketB.scale.set(0.35,0.35);
 	closeBucketB.scale.set(0.35,0.35);
 	openBucketBMove.scale.set(0.35,0.35);
 	openBucketBLight.scale.set(0.35,0.35);
-	openBucketBShadow.scale.set(0.35,0.35);
+	openBucketBShadow.scale.set(0.5,0.5);
 	openBucketB_arrow.scale.set(0.35,0.35);
+	openBucketBMove.scale.set(0.35,0.35);
+	// openBucketBMove.alpha = 1;
 
 	// openBucketC.scale.set(0.35,0.35);
 	closeBucketC.scale.set(0.35,0.35);
 	openBucketCMove.scale.set(0.35,0.35);
 	openBucketCLight.scale.set(0.35,0.35);
-	openBucketCShadow.scale.set(0.35,0.35);
+	openBucketCShadow.scale.set(0.5,0.5);
 	openBucketC_arrow.scale.set(0.35,0.35);
+	openBucketCMove.scale.set(0.35,0.35);
+	// openBucketCMove.alpha = 1;
 
 
 	openBucketAShadow.x = openBucketA.x + 15;
@@ -494,6 +502,15 @@ function mobileDevicesResize(){
 
 	openBucketA_arrow.x = openBucketA.x + 3;
 	openBucketA_arrow.y = openBucketA.y - 80;
+
+	openBucketAMove.y = openBucketA.y - 60;
+	openBucketBMove.y = openBucketB.y - 60;
+	openBucketCMove.y = openBucketC.y - 60;
+
+	openBucketAMove.x = openBucketA.x - 55;
+	openBucketBMove.x = openBucketB.x - 55;
+	openBucketCMove.x = openBucketC.x - 55;
+
 
 
 }
@@ -535,53 +552,83 @@ function completeLoad() {
 let animSpeed = 80;
 
 function L_to_R(obj1,obj2) {
+
 	let animType = _animRandomizer();
-	if (animType == 0) {
+	if (window.mobileCheck()) {
 		createjs.Tween.get(obj2 , {loop : false})
-		.to({x :-Math.abs(349.09090909090907) , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :-Math.abs(699.1803278688524) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+		.to({x : -110 , y : 100} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+		.to({x : -230 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
 		.to({x : 0 , y : 0})
 
 		createjs.Tween.get(obj1, {loop : false})
-		.to({x :349.09090909090907 , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :699.1803278688524 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+		.to({x : 110 , y : -100} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+		.to({x : 230 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
 		.to({x : 0 , y : 0})
 	} else {
-		createjs.Tween.get(obj2 , {loop : false})
-		.to({x :-Math.abs(349.09090909090907) , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :-Math.abs(699.1803278688524) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
+		if (animType == 0) {
+			createjs.Tween.get(obj2 , {loop : false})
+			.to({x :-Math.abs(349.09090909090907) , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :-Math.abs(699.1803278688524) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
 
-		createjs.Tween.get(obj1, {loop : false})
-		.to({x :349.09090909090907 , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :699.1803278688524 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
+			createjs.Tween.get(obj1, {loop : false})
+			.to({x :349.09090909090907 , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :699.1803278688524 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+		} else {
+			createjs.Tween.get(obj2 , {loop : false})
+			.to({x :-Math.abs(349.09090909090907) , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :-Math.abs(699.1803278688524) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+
+			createjs.Tween.get(obj1, {loop : false})
+			.to({x :349.09090909090907 , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :699.1803278688524 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+		}
 	}
+
 	
 }
 
 function L_to_M(obj1,obj2) {
 	let animType = _animRandomizer();
-	if (animType == 0) {
-		createjs.Tween.get(obj2 , {loop : false})
-		.to({x :-Math.abs(349.09090909090907 / 2) , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :-Math.abs(349.09090909090907) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
+	if (window.mobileCheck()) {
+			createjs.Tween.get(obj2 , {loop : false})
+			.to({x : -30 , y : 50} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : -115 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+			createjs.Tween.get(obj1, {loop : false})
+			.to({x : 30 , y : -50} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 115 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
 
-		createjs.Tween.get(obj1, {loop : false})
-		.to({x :349.09090909090907 / 2 , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :349.09090909090907 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
+
 	} else {
-		createjs.Tween.get(obj2 , {loop : false})
-		.to({x :-Math.abs(349.09090909090907 / 2) , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :-Math.abs(349.09090909090907) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
 
-		createjs.Tween.get(obj1, {loop : false})
-		.to({x :349.09090909090907 / 2 , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x :349.09090909090907 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
-		.to({x : 0 , y : 0})
+		if (animType == 0) {
+			createjs.Tween.get(obj2 , {loop : false})
+			.to({x :-Math.abs(349.09090909090907 / 2) , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :-Math.abs(349.09090909090907) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+
+			createjs.Tween.get(obj1, {loop : false})
+			.to({x :349.09090909090907 / 2 , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :349.09090909090907 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+		} else {
+			createjs.Tween.get(obj2 , {loop : false})
+			.to({x :-Math.abs(349.09090909090907 / 2) , y : -170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :-Math.abs(349.09090909090907) , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+
+			createjs.Tween.get(obj1, {loop : false})
+			.to({x :349.09090909090907 / 2 , y : 170} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x :349.09090909090907 , y : 0} ,  animSpeed ,  createjs.Ease.getPowInOut(1))
+			.to({x : 0 , y : 0})
+		}
+
+
 	}
 
 }
@@ -593,7 +640,7 @@ function _animRandomizer(){
 }
 
 let _animPoint = [
-	0,1,2,1,0,2,1,0,1,0,
+	1,2,0,1,2,2,0,1,2,0,1,2,2,0
 	// {1,2,0,1,2,2,0,1,2,0,1,2,2,0},
 	// {2,1,0,1,1,0,2,1,0,1,0,2,0,1},
 ]
@@ -667,193 +714,236 @@ function bucketA_Anim(eventData){
  	openBucketALight.alpha = 0;
  	openBucketA.interactive = false;
 
- 	createjs.Tween.get(openBucketA,{loop : false})
- 	.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
- 	.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
+ 	if (window.mobileCheck()) {
+ 		createjs.Tween.get(openBucketA,{loop : false})
+ 		.to({y : openBucketA.y - 80 , x : openBucketA.x - 6},250, createjs.Ease.getPowInOut(1))
+ 		.to({ x : openBucketA.x - 5},100, createjs.Ease.getPowInOut(1))
 
- 	createjs.Tween.get(openBucketAShadow,{loop : false})
- 	.to({
- 		height : openBucketAShadow.height + 300,
- 		width : openBucketAShadow.width - 100,
- 		rotation : -1 ,
- 	 	x : openBucketAShadow.x + 50 ,
- 	 	y : openBucketAShadow.y - 90
- 	 },250, createjs.Ease.getPowInOut(1))
-
- 	setTimeout(function(){
- 		closeBucketA.x = openBucketA.x;
- 		closeBucketA.y = openBucketA.y;
- 		closeBucketA.alpha = 1;
- 		openBucketA.alpha = 0;
- 	},500);
-
-
- 	setTimeout(function(){
- 		openBucketB.play()
- 		openBucketB_arrow.alpha = 0;
- 		openBucketBLight.alpha = 0;
- 		openBucketB.interactive = false;
- 		createjs.Tween.get(openBucketB,{loop : false})
- 		.to({y : openBucketB.y - 160 , x : openBucketB.x - 11},250, createjs.Ease.getPowInOut(1))
- 		.to({ x : openBucketB.x - 10},100, createjs.Ease.getPowInOut(1))
- 		createjs.Tween.get(openBucketBShadow,{loop : false})
+ 		createjs.Tween.get(openBucketAShadow,{loop : false})
  		.to({
- 			height : openBucketBShadow.height + 300,
- 			width : openBucketBShadow.width - 100,
- 			rotation : -1 ,
- 		 	x : openBucketBShadow.x + 50 ,
- 		 	y : openBucketBShadow.y - 90
+ 			height : openBucketAShadow.height + 100,
+ 			width : openBucketAShadow.width - 50,
+ 			rotation : -0.8 ,
+ 		 	x : openBucketAShadow.x + 20,
+ 		 	y : openBucketAShadow.y - 60
  		 },250, createjs.Ease.getPowInOut(1))
 
  		setTimeout(function(){
- 			closeBucketB.x = openBucketB.x;
- 			closeBucketB.y = openBucketB.y;
- 			closeBucketB.alpha = 1;
- 			openBucketB.alpha = 0;
+ 			closeBucketA.x = openBucketA.x;
+ 			closeBucketA.y = openBucketA.y;
+ 			closeBucketA.alpha = 1;
+ 			openBucketA.alpha = 0;
  		},500);
 
- 		openBucketC.play()
- 		openBucketC_arrow.alpha = 0;
- 		openBucketCLight.alpha = 0;
- 		openBucketC.interactive = false;
- 		createjs.Tween.get(openBucketC,{loop : false})
- 		.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
- 		.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
- 		createjs.Tween.get(openBucketCShadow,{loop : false})
+
+ 		setTimeout(function(){
+	 		openBucketB.play()
+	 		openBucketB_arrow.alpha = 0;
+	 		openBucketBLight.alpha = 0;
+	 		openBucketB.interactive = false;
+	 		createjs.Tween.get(openBucketB,{loop : false})
+	 		.to({y : openBucketB.y - 80 , x : openBucketB.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketB.x - 5},100, createjs.Ease.getPowInOut(1))
+	 		createjs.Tween.get(openBucketBShadow,{loop : false})
+	 		.to({
+	 			height : openBucketBShadow.height + 100,
+	 			width : openBucketBShadow.width - 50,
+	 			rotation : -1 ,
+	 		 	x : openBucketBShadow.x + 20 ,
+	 		 	y : openBucketBShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketB.x = openBucketB.x;
+	 			closeBucketB.y = openBucketB.y;
+	 			closeBucketB.alpha = 1;
+	 			openBucketB.alpha = 0;
+	 		},500);
+
+	 		openBucketC.play()
+	 		openBucketC_arrow.alpha = 0;
+	 		openBucketCLight.alpha = 0;
+	 		openBucketC.interactive = false;
+	 		createjs.Tween.get(openBucketC,{loop : false})
+	 		.to({y : openBucketC.y - 80 , x : openBucketC.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketC.x - 5},100, createjs.Ease.getPowInOut(1))
+	 		createjs.Tween.get(openBucketCShadow,{loop : false})
+	 		.to({
+	 			height : openBucketCShadow.height + 100,
+	 			width : openBucketCShadow.width  - 50,
+	 			rotation : -1 ,
+	 		 	x : openBucketCShadow.x + 20 ,
+	 		 	y : openBucketCShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketC.x = openBucketC.x;
+	 			closeBucketC.y = openBucketC.y;
+	 			closeBucketC.alpha = 1;
+	 			openBucketC.alpha = 0;
+	 			closeBucketAnim();
+	 		},500);
+
+ 		},1000);
+ 	} else {
+ 		createjs.Tween.get(openBucketA,{loop : false})
+ 		.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
+ 		.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
+
+ 		createjs.Tween.get(openBucketAShadow,{loop : false})
  		.to({
- 			height : openBucketCShadow.height + 300,
- 			width : openBucketCShadow.width - 100,
+ 			height : openBucketAShadow.height + 300,
+ 			width : openBucketAShadow.width - 100,
  			rotation : -1 ,
- 		 	x : openBucketCShadow.x + 50 ,
- 		 	y : openBucketCShadow.y - 90
+ 		 	x : openBucketAShadow.x + 50 ,
+ 		 	y : openBucketAShadow.y - 90
  		 },250, createjs.Ease.getPowInOut(1))
 
  		setTimeout(function(){
- 			closeBucketC.x = openBucketC.x;
- 			closeBucketC.y = openBucketC.y;
- 			closeBucketC.alpha = 1;
- 			openBucketC.alpha = 0;
-
- 			closeBucketAnim();
+ 			closeBucketA.x = openBucketA.x;
+ 			closeBucketA.y = openBucketA.y;
+ 			closeBucketA.alpha = 1;
+ 			openBucketA.alpha = 0;
  		},500);
 
- 	},1000);
+
+ 		setTimeout(function(){
+ 			openBucketB.play()
+ 			openBucketB_arrow.alpha = 0;
+ 			openBucketBLight.alpha = 0;
+ 			openBucketB.interactive = false;
+ 			createjs.Tween.get(openBucketB,{loop : false})
+ 			.to({y : openBucketB.y - 160 , x : openBucketB.x - 11},250, createjs.Ease.getPowInOut(1))
+ 			.to({ x : openBucketB.x - 10},100, createjs.Ease.getPowInOut(1))
+ 			createjs.Tween.get(openBucketBShadow,{loop : false})
+ 			.to({
+ 				height : openBucketBShadow.height + 300,
+ 				width : openBucketBShadow.width - 100,
+ 				rotation : -1 ,
+ 			 	x : openBucketBShadow.x + 50 ,
+ 			 	y : openBucketBShadow.y - 90
+ 			 },250, createjs.Ease.getPowInOut(1))
+
+ 			setTimeout(function(){
+ 				closeBucketB.x = openBucketB.x;
+ 				closeBucketB.y = openBucketB.y;
+ 				closeBucketB.alpha = 1;
+ 				openBucketB.alpha = 0;
+ 			},500);
+
+ 			openBucketC.play()
+ 			openBucketC_arrow.alpha = 0;
+ 			openBucketCLight.alpha = 0;
+ 			openBucketC.interactive = false;
+ 			createjs.Tween.get(openBucketC,{loop : false})
+ 			.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
+ 			.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
+ 			createjs.Tween.get(openBucketCShadow,{loop : false})
+ 			.to({
+ 				height : openBucketCShadow.height + 300,
+ 				width : openBucketCShadow.width - 100,
+ 				rotation : -1 ,
+ 			 	x : openBucketCShadow.x + 50 ,
+ 			 	y : openBucketCShadow.y - 90
+ 			 },250, createjs.Ease.getPowInOut(1))
+
+ 			setTimeout(function(){
+ 				closeBucketC.x = openBucketC.x;
+ 				closeBucketC.y = openBucketC.y;
+ 				closeBucketC.alpha = 1;
+ 				openBucketC.alpha = 0;
+
+ 				closeBucketAnim();
+ 			},500);
+
+ 		},1000);
+ 	}
+
+
+
 }
 
 
 function bucketB_Anim(eventData){
- 	openBucketB.play()
- 	openBucketB_arrow.alpha = 0;
- 	openBucketBLight.alpha = 0;
- 	openBucketB.interactive = false;
- 	createjs.Tween.get(openBucketB,{loop : false})
- 	.to({y : openBucketB.y - 160 , x : openBucketB.x - 11},250, createjs.Ease.getPowInOut(1))
- 	.to({ x : openBucketB.x - 10},100, createjs.Ease.getPowInOut(1))
- 	createjs.Tween.get(openBucketBShadow,{loop : false})
- 	.to({
- 		height : openBucketBShadow.height + 300,
- 		width : openBucketBShadow.width - 100,
- 		rotation : -1 ,
- 	 	x : openBucketBShadow.x + 50 ,
- 	 	y : openBucketBShadow.y - 90
- 	 },250, createjs.Ease.getPowInOut(1))
 
-
- 	setTimeout(function(){
- 		closeBucketB.x = openBucketB.x;
- 		closeBucketB.y = openBucketB.y;
- 		closeBucketB.alpha = 1;
- 		openBucketB.alpha = 0;
- 	},500);
-
- 	setTimeout(function(){
- 		openBucketC.play()
- 		openBucketC_arrow.alpha = 0;
- 		openBucketCLight.alpha = 0;
- 		openBucketC.interactive = false;
- 		createjs.Tween.get(openBucketC,{loop : false})
- 		.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
- 		.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
- 		createjs.Tween.get(openBucketCShadow,{loop : false})
- 		.to({
- 			height : openBucketCShadow.height + 300,
- 			width : openBucketCShadow.width - 100,
- 			rotation : -1 ,
- 		 	x : openBucketCShadow.x + 50 ,
- 		 	y : openBucketCShadow.y - 90
- 		 },250, createjs.Ease.getPowInOut(1))
-
- 		setTimeout(function(){
- 			closeBucketC.x = openBucketC.x;
- 			closeBucketC.y = openBucketC.y;
- 			closeBucketC.alpha = 1;
- 			openBucketC.alpha = 0;
- 		},500);
-
-
- 		openBucketA.play()
- 		openBucketA_arrow.alpha = 0;
- 		openBucketALight.alpha = 0;
- 		openBucketA.interactive = false;
- 		createjs.Tween.get(openBucketA,{loop : false})
- 		.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
- 		.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
-
- 		createjs.Tween.get(openBucketAShadow,{loop : false})
- 		.to({
- 			height : openBucketAShadow.height + 300,
- 			width : openBucketAShadow.width - 100,
- 			rotation : -1 ,
- 		 	x : openBucketAShadow.x + 50 ,
- 		 	y : openBucketAShadow.y - 90
- 		 },250, createjs.Ease.getPowInOut(1))
-
- 		setTimeout(function(){
- 			closeBucketA.x = openBucketA.x;
- 			closeBucketA.y = openBucketA.y;
- 			closeBucketA.alpha = 1;
- 			openBucketA.alpha = 0;
-
- 			closeBucketAnim();
- 		},500);
-
-
- 	},1000);
- 	
-}
-
-function bucketC_Anim(eventData){
- 	openBucketC.play()
- 	openBucketC_arrow.alpha = 0;
- 	openBucketCLight.alpha = 0;
- 	openBucketC.interactive = false;
-
-
- 	createjs.Tween.get(openBucketC,{loop : false})
- 	.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
- 	.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
- 	createjs.Tween.get(openBucketCShadow,{loop : false})
- 	.to({
- 		height : openBucketCShadow.height + 300,
- 		width : openBucketCShadow.width - 100,
- 		rotation : -1 ,
- 	 	x : openBucketCShadow.x + 50 ,
- 	 	y : openBucketCShadow.y - 90
- 	 },250, createjs.Ease.getPowInOut(1))
-
- 	setTimeout(function(){
- 		closeBucketC.x = openBucketC.x;
- 		closeBucketC.y = openBucketC.y;
- 		closeBucketC.alpha = 1;
- 		openBucketC.alpha = 0;
- 	},500);
-
-
- 	setTimeout(function(){
+ 	if (window.mobileCheck()) {
  		openBucketB.play()
  		openBucketB_arrow.alpha = 0;
  		openBucketBLight.alpha = 0;
  		openBucketB.interactive = false;
+ 		createjs.Tween.get(openBucketB,{loop : false})
+ 		.to({y : openBucketB.y - 80 , x : openBucketB.x - 6},250, createjs.Ease.getPowInOut(1))
+ 		.to({ x : openBucketB.x - 5},100, createjs.Ease.getPowInOut(1))
+ 		createjs.Tween.get(openBucketBShadow,{loop : false})
+ 		.to({
+ 			height : openBucketBShadow.height + 100,
+ 			width : openBucketBShadow.width - 50,
+ 			rotation : -1 ,
+ 		 	x : openBucketBShadow.x + 20 ,
+ 		 	y : openBucketBShadow.y - 60
+ 		 },250, createjs.Ease.getPowInOut(1))
+
+ 		setTimeout(function(){
+ 			closeBucketB.x = openBucketB.x;
+ 			closeBucketB.y = openBucketB.y;
+ 			closeBucketB.alpha = 1;
+ 			openBucketB.alpha = 0;
+ 		},500);
+		
+
+ 		setTimeout(function(){
+			openBucketA.play()
+			openBucketA_arrow.alpha = 0;
+			openBucketALight.alpha = 0;
+			openBucketA.interactive = false;
+
+	 		createjs.Tween.get(openBucketA,{loop : false})
+	 		.to({y : openBucketA.y - 80 , x : openBucketA.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketA.x - 5},100, createjs.Ease.getPowInOut(1))
+
+	 		createjs.Tween.get(openBucketAShadow,{loop : false})
+	 		.to({
+	 			height : openBucketAShadow.height + 100,
+	 			width : openBucketAShadow.width - 50,
+	 			rotation : -0.8 ,
+	 		 	x : openBucketAShadow.x + 20,
+	 		 	y : openBucketAShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketA.x = openBucketA.x;
+	 			closeBucketA.y = openBucketA.y;
+	 			closeBucketA.alpha = 1;
+	 			openBucketA.alpha = 0;
+	 		},500);
+
+
+	 		openBucketC.play()
+	 		openBucketC_arrow.alpha = 0;
+	 		openBucketCLight.alpha = 0;
+	 		openBucketC.interactive = false;
+	 		createjs.Tween.get(openBucketC,{loop : false})
+	 		.to({y : openBucketC.y - 80 , x : openBucketC.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketC.x - 5},100, createjs.Ease.getPowInOut(1))
+	 		createjs.Tween.get(openBucketCShadow,{loop : false})
+	 		.to({
+	 			height : openBucketCShadow.height + 100,
+	 			width : openBucketCShadow.width  - 50,
+	 			rotation : -1 ,
+	 		 	x : openBucketCShadow.x + 20 ,
+	 		 	y : openBucketCShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketC.x = openBucketC.x;
+	 			closeBucketC.y = openBucketC.y;
+	 			closeBucketC.alpha = 1;
+	 			openBucketC.alpha = 0;
+	 			closeBucketAnim();
+	 		},500);
+
+ 		},1000);
+ 	} else {
  		createjs.Tween.get(openBucketB,{loop : false})
  		.to({y : openBucketB.y - 160 , x : openBucketB.x - 11},250, createjs.Ease.getPowInOut(1))
  		.to({ x : openBucketB.x - 10},100, createjs.Ease.getPowInOut(1))
@@ -868,145 +958,426 @@ function bucketC_Anim(eventData){
 
 
  		setTimeout(function(){
- 			closeBucketA.x = openBucketA.x;
- 			closeBucketA.y = openBucketA.y;
- 			closeBucketA.alpha = 1;
- 			openBucketA.alpha = 0;
- 		},500);
-
-
- 		openBucketA.play()
-
-
- 		openBucketA_arrow.alpha = 0;
- 		openBucketALight.alpha = 0;
- 		openBucketA.interactive = false;
- 		createjs.Tween.get(openBucketA,{loop : false})
- 		.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
- 		.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
-
- 		createjs.Tween.get(openBucketAShadow,{loop : false})
- 		.to({
- 			height : openBucketAShadow.height + 300,
- 			width : openBucketAShadow.width - 100,
- 			rotation : -1 ,
- 		 	x : openBucketAShadow.x + 50 ,
- 		 	y : openBucketAShadow.y - 90
- 		 },250, createjs.Ease.getPowInOut(1))
-
-
- 		setTimeout(function(){
  			closeBucketB.x = openBucketB.x;
  			closeBucketB.y = openBucketB.y;
  			closeBucketB.alpha = 1;
  			openBucketB.alpha = 0;
-
- 			closeBucketAnim();
  		},500);
 
- 	},1000);
+ 		setTimeout(function(){
+ 			openBucketC.play()
+ 			openBucketC_arrow.alpha = 0;
+ 			openBucketCLight.alpha = 0;
+ 			openBucketC.interactive = false;
+ 			createjs.Tween.get(openBucketC,{loop : false})
+ 			.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
+ 			.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
+ 			createjs.Tween.get(openBucketCShadow,{loop : false})
+ 			.to({
+ 				height : openBucketCShadow.height + 300,
+ 				width : openBucketCShadow.width - 100,
+ 				rotation : -1 ,
+ 			 	x : openBucketCShadow.x + 50 ,
+ 			 	y : openBucketCShadow.y - 90
+ 			 },250, createjs.Ease.getPowInOut(1))
+
+ 			setTimeout(function(){
+ 				closeBucketC.x = openBucketC.x;
+ 				closeBucketC.y = openBucketC.y;
+ 				closeBucketC.alpha = 1;
+ 				openBucketC.alpha = 0;
+ 			},500);
+
+
+ 			openBucketA.play()
+ 			openBucketA_arrow.alpha = 0;
+ 			openBucketALight.alpha = 0;
+ 			openBucketA.interactive = false;
+ 			createjs.Tween.get(openBucketA,{loop : false})
+ 			.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
+ 			.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
+
+ 			createjs.Tween.get(openBucketAShadow,{loop : false})
+ 			.to({
+ 				height : openBucketAShadow.height + 300,
+ 				width : openBucketAShadow.width - 100,
+ 				rotation : -1 ,
+ 			 	x : openBucketAShadow.x + 50 ,
+ 			 	y : openBucketAShadow.y - 90
+ 			 },250, createjs.Ease.getPowInOut(1))
+
+ 			setTimeout(function(){
+ 				closeBucketA.x = openBucketA.x;
+ 				closeBucketA.y = openBucketA.y;
+ 				closeBucketA.alpha = 1;
+ 				openBucketA.alpha = 0;
+
+ 				closeBucketAnim();
+ 			},500);
+
+
+ 		},1000);
+ 	}
+
+ 	
+}
+
+function bucketC_Anim(eventData){
+	if(window.mobileCheck()){
+
+		openBucketC.play()
+		openBucketC_arrow.alpha = 0;
+		openBucketCLight.alpha = 0;
+		openBucketC.interactive = false;
+		createjs.Tween.get(openBucketC,{loop : false})
+		.to({y : openBucketC.y - 80 , x : openBucketC.x - 6},250, createjs.Ease.getPowInOut(1))
+		.to({ x : openBucketC.x - 5},100, createjs.Ease.getPowInOut(1))
+		createjs.Tween.get(openBucketCShadow,{loop : false})
+		.to({
+			height : openBucketCShadow.height + 100,
+			width : openBucketCShadow.width  - 50,
+			rotation : -1 ,
+		 	x : openBucketCShadow.x + 20 ,
+		 	y : openBucketCShadow.y - 60
+		 },250, createjs.Ease.getPowInOut(1))
+
+		setTimeout(function(){
+			closeBucketC.x = openBucketC.x;
+			closeBucketC.y = openBucketC.y;
+			closeBucketC.alpha = 1;
+			openBucketC.alpha = 0;
+			
+		},500);
+		
+ 		setTimeout(function(){
+			openBucketA.play()
+			openBucketA_arrow.alpha = 0;
+			openBucketALight.alpha = 0;
+			openBucketA.interactive = false;
+
+	 		createjs.Tween.get(openBucketA,{loop : false})
+	 		.to({y : openBucketA.y - 80 , x : openBucketA.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketA.x - 5},100, createjs.Ease.getPowInOut(1))
+
+	 		createjs.Tween.get(openBucketAShadow,{loop : false})
+	 		.to({
+	 			height : openBucketAShadow.height + 100,
+	 			width : openBucketAShadow.width - 50,
+	 			rotation : -0.8 ,
+	 		 	x : openBucketAShadow.x + 20,
+	 		 	y : openBucketAShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketA.x = openBucketA.x;
+	 			closeBucketA.y = openBucketA.y;
+	 			closeBucketA.alpha = 1;
+	 			openBucketA.alpha = 0;
+	 		},500);
+
+
+
+	 		openBucketB.play()
+	 		openBucketB_arrow.alpha = 0;
+	 		openBucketBLight.alpha = 0;
+	 		openBucketB.interactive = false;
+	 		createjs.Tween.get(openBucketB,{loop : false})
+	 		.to({y : openBucketB.y - 80 , x : openBucketB.x - 6},250, createjs.Ease.getPowInOut(1))
+	 		.to({ x : openBucketB.x - 5},100, createjs.Ease.getPowInOut(1))
+	 		createjs.Tween.get(openBucketBShadow,{loop : false})
+	 		.to({
+	 			height : openBucketBShadow.height + 100,
+	 			width : openBucketBShadow.width - 50,
+	 			rotation : -1 ,
+	 		 	x : openBucketBShadow.x + 20 ,
+	 		 	y : openBucketBShadow.y - 60
+	 		 },250, createjs.Ease.getPowInOut(1))
+
+	 		setTimeout(function(){
+	 			closeBucketB.x = openBucketB.x;
+	 			closeBucketB.y = openBucketB.y;
+	 			closeBucketB.alpha = 1;
+	 			openBucketB.alpha = 0;
+	 			closeBucketAnim();
+	 		},500);
+
+ 		},1000);
+	} else {
+		openBucketC.play()
+		openBucketC_arrow.alpha = 0;
+		openBucketCLight.alpha = 0;
+		openBucketC.interactive = false;
+
+
+		createjs.Tween.get(openBucketC,{loop : false})
+		.to({y : openBucketC.y - 160 , x : openBucketC.x - 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : openBucketC.x - 10},100, createjs.Ease.getPowInOut(1))
+		createjs.Tween.get(openBucketCShadow,{loop : false})
+		.to({
+			height : openBucketCShadow.height + 300,
+			width : openBucketCShadow.width - 100,
+			rotation : -1 ,
+		 	x : openBucketCShadow.x + 50 ,
+		 	y : openBucketCShadow.y - 90
+		 },250, createjs.Ease.getPowInOut(1))
+
+		setTimeout(function(){
+			closeBucketC.x = openBucketC.x;
+			closeBucketC.y = openBucketC.y;
+			closeBucketC.alpha = 1;
+			openBucketC.alpha = 0;
+		},500);
+
+
+		setTimeout(function(){
+			openBucketB.play()
+			openBucketB_arrow.alpha = 0;
+			openBucketBLight.alpha = 0;
+			openBucketB.interactive = false;
+			createjs.Tween.get(openBucketB,{loop : false})
+			.to({y : openBucketB.y - 160 , x : openBucketB.x - 11},250, createjs.Ease.getPowInOut(1))
+			.to({ x : openBucketB.x - 10},100, createjs.Ease.getPowInOut(1))
+			createjs.Tween.get(openBucketBShadow,{loop : false})
+			.to({
+				height : openBucketBShadow.height + 300,
+				width : openBucketBShadow.width - 100,
+				rotation : -1 ,
+			 	x : openBucketBShadow.x + 50 ,
+			 	y : openBucketBShadow.y - 90
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+			setTimeout(function(){
+				closeBucketA.x = openBucketA.x;
+				closeBucketA.y = openBucketA.y;
+				closeBucketA.alpha = 1;
+				openBucketA.alpha = 0;
+			},500);
+
+
+			openBucketA.play()
+
+
+			openBucketA_arrow.alpha = 0;
+			openBucketALight.alpha = 0;
+			openBucketA.interactive = false;
+			createjs.Tween.get(openBucketA,{loop : false})
+			.to({y : openBucketA.y - 160 , x : openBucketA.x - 11},250, createjs.Ease.getPowInOut(1))
+			.to({ x : openBucketA.x - 10},100, createjs.Ease.getPowInOut(1))
+
+			createjs.Tween.get(openBucketAShadow,{loop : false})
+			.to({
+				height : openBucketAShadow.height + 300,
+				width : openBucketAShadow.width - 100,
+				rotation : -1 ,
+			 	x : openBucketAShadow.x + 50 ,
+			 	y : openBucketAShadow.y - 90
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+			setTimeout(function(){
+				closeBucketB.x = openBucketB.x;
+				closeBucketB.y = openBucketB.y;
+				closeBucketB.alpha = 1;
+				openBucketB.alpha = 0;
+
+				closeBucketAnim();
+			},500);
+
+		},1000);
+	}
+ 	
  	
 }
 
 
 function closeBucketAnim(){
 
+
+	if (window.mobileCheck()) {
+		createjs.Tween.get(closeBucketA,{loop : false})
+		.to({y : closeBucketA.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketA.y + 80 , x : closeBucketA.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketA.x + 5},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketA.play()
+			createjs.Tween.get(openBucketAShadow,{loop : false})
+			.to({
+				height : openBucketAShadow.height - 100,
+				width : openBucketAShadow.width + 50,
+				rotation : 0 ,
+			 	x : openBucketAShadow.x - 20 ,
+			 	y : openBucketAShadow.y + 60
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+
+			setTimeout(function(){
+				openBucketA.x = closeBucketA.x;
+				openBucketA.y = closeBucketA.y;
+				closeBucketA.alpha = 0;
+				openBucketA.alpha = 1;
+				closeBucketA.gotoAndStop(0);
+				openBucketA.gotoAndStop(0);
+
+			},500);
+		},150)
+
+
+		createjs.Tween.get(closeBucketB,{loop : false})
+		.to({y : closeBucketB.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketB.y + 80 , x : closeBucketB.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketB.x + 5},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketB.play()
+			createjs.Tween.get(openBucketBShadow,{loop : false})
+			.to({
+				height : openBucketBShadow.height - 100,
+				width : openBucketBShadow.width + 50,
+				rotation : 0 ,
+			 	x : openBucketBShadow.x - 20 ,
+			 	y : openBucketBShadow.y + 60
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+
+			setTimeout(function(){
+				openBucketB.x = closeBucketB.x;
+				openBucketB.y = closeBucketB.y;
+				closeBucketB.alpha = 0;
+				openBucketB.alpha = 1;
+				closeBucketB.gotoAndStop(0)
+				openBucketB.gotoAndStop(0)
+			},500);
+		},150)
+
+
+
+		
+		createjs.Tween.get(closeBucketC,{loop : false})
+		.to({y : closeBucketC.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketC.y + 80 , x : closeBucketC.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketC.x + 5},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketC.play();
+			createjs.Tween.get(openBucketCShadow,{loop : false})
+			.to({
+				height : openBucketCShadow.height - 100,
+				width : openBucketCShadow.width + 50,
+				rotation : 0 ,
+			 	x : openBucketCShadow.x - 20 ,
+			 	y : openBucketCShadow.y + 60
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+			setTimeout(function(){
+				openBucketC.x = closeBucketC.x;
+				openBucketC.y = closeBucketC.y;
+				closeBucketC.alpha = 0;
+				openBucketC.alpha = 1;
+				closeBucketC.gotoAndStop(0);
+				openBucketC.gotoAndStop(0);
+			},500);
+		},150)
+
+
+		setTimeout(function(){
+			_callAnim();
+		},1000);
+	} else {
+		createjs.Tween.get(closeBucketA,{loop : false})
+		.to({y : closeBucketA.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketA.y + 160 , x : closeBucketA.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketA.x + 10},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketA.play()
+			createjs.Tween.get(openBucketAShadow,{loop : false})
+			.to({
+				height : openBucketAShadow.height - 300,
+				width : openBucketAShadow.width + 100,
+				rotation : 0 ,
+			 	x : openBucketAShadow.x - 50 ,
+			 	y : openBucketAShadow.y + 90
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+
+			setTimeout(function(){
+				openBucketA.x = closeBucketA.x;
+				openBucketA.y = closeBucketA.y;
+				closeBucketA.alpha = 0;
+				openBucketA.alpha = 1;
+				closeBucketA.gotoAndStop(0);
+				openBucketA.gotoAndStop(0);
+
+			},500);
+		},150)
+
+
+		createjs.Tween.get(closeBucketB,{loop : false})
+		.to({y : closeBucketB.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketB.y + 160 , x : closeBucketB.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketB.x + 10},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketB.play()
+			createjs.Tween.get(openBucketBShadow,{loop : false})
+			.to({
+				height : openBucketBShadow.height - 300,
+				width : openBucketBShadow.width + 100,
+				rotation : 0 ,
+			 	x : openBucketBShadow.x - 50 ,
+			 	y : openBucketBShadow.y + 90
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+
+			setTimeout(function(){
+				openBucketB.x = closeBucketB.x;
+				openBucketB.y = closeBucketB.y;
+				closeBucketB.alpha = 0;
+				openBucketB.alpha = 1;
+				closeBucketB.gotoAndStop(0)
+				openBucketB.gotoAndStop(0)
+			},500);
+		},150)
+
+
+
+		
+		createjs.Tween.get(closeBucketC,{loop : false})
+		.to({y : closeBucketC.y - 20 },150, createjs.Ease.getPowInOut(1))
+		.to({y : closeBucketC.y + 160 , x : closeBucketC.x + 11},250, createjs.Ease.getPowInOut(1))
+		.to({ x : closeBucketC.x + 10},100, createjs.Ease.getPowInOut(1))
+		setTimeout(function(){
+			closeBucketC.play();
+			createjs.Tween.get(openBucketCShadow,{loop : false})
+			.to({
+				height : openBucketCShadow.height - 300,
+				width : openBucketCShadow.width + 100,
+				rotation : 0 ,
+			 	x : openBucketCShadow.x - 50 ,
+			 	y : openBucketCShadow.y + 90
+			 },250, createjs.Ease.getPowInOut(1))
+
+
+			setTimeout(function(){
+				openBucketC.x = closeBucketC.x;
+				openBucketC.y = closeBucketC.y;
+				closeBucketC.alpha = 0;
+				openBucketC.alpha = 1;
+				closeBucketC.gotoAndStop(0);
+				openBucketC.gotoAndStop(0);
+			},500);
+		},150)
+
+
+
+		setTimeout(function(){
+			_callAnim();
+		},1000);
+
+	}
 	
-	createjs.Tween.get(closeBucketA,{loop : false})
-	.to({y : closeBucketA.y - 20 },150, createjs.Ease.getPowInOut(1))
-	.to({y : closeBucketA.y + 160 , x : closeBucketA.x + 11},250, createjs.Ease.getPowInOut(1))
-	.to({ x : closeBucketA.x + 10},100, createjs.Ease.getPowInOut(1))
-	setTimeout(function(){
-		closeBucketA.play()
-		createjs.Tween.get(openBucketAShadow,{loop : false})
-		.to({
-			height : openBucketAShadow.height - 300,
-			width : openBucketAShadow.width + 100,
-			rotation : 0 ,
-		 	x : openBucketAShadow.x - 50 ,
-		 	y : openBucketAShadow.y + 90
-		 },250, createjs.Ease.getPowInOut(1))
-
-
-
-		setTimeout(function(){
-			openBucketA.x = closeBucketA.x;
-			openBucketA.y = closeBucketA.y;
-			closeBucketA.alpha = 0;
-			openBucketA.alpha = 1;
-			closeBucketA.gotoAndStop(0);
-			openBucketA.gotoAndStop(0);
-
-		},500);
-	},150)
-
-
-
-
-
-
-	createjs.Tween.get(closeBucketB,{loop : false})
-	.to({y : closeBucketB.y - 20 },150, createjs.Ease.getPowInOut(1))
-	.to({y : closeBucketB.y + 160 , x : closeBucketB.x + 11},250, createjs.Ease.getPowInOut(1))
-	.to({ x : closeBucketB.x + 10},100, createjs.Ease.getPowInOut(1))
-	setTimeout(function(){
-		closeBucketB.play()
-		createjs.Tween.get(openBucketBShadow,{loop : false})
-		.to({
-			height : openBucketBShadow.height - 300,
-			width : openBucketBShadow.width + 100,
-			rotation : 0 ,
-		 	x : openBucketBShadow.x - 50 ,
-		 	y : openBucketBShadow.y + 90
-		 },250, createjs.Ease.getPowInOut(1))
-
-
-
-		setTimeout(function(){
-			openBucketB.x = closeBucketB.x;
-			openBucketB.y = closeBucketB.y;
-			closeBucketB.alpha = 0;
-			openBucketB.alpha = 1;
-			closeBucketB.gotoAndStop(0)
-			openBucketB.gotoAndStop(0)
-		},500);
-	},150)
-
-
-
-	
-	createjs.Tween.get(closeBucketC,{loop : false})
-	.to({y : closeBucketC.y - 20 },150, createjs.Ease.getPowInOut(1))
-	.to({y : closeBucketC.y + 160 , x : closeBucketC.x + 11},250, createjs.Ease.getPowInOut(1))
-	.to({ x : closeBucketC.x + 10},100, createjs.Ease.getPowInOut(1))
-	setTimeout(function(){
-		closeBucketC.play();
-		createjs.Tween.get(openBucketCShadow,{loop : false})
-		.to({
-			height : openBucketCShadow.height - 300,
-			width : openBucketCShadow.width + 100,
-			rotation : 0 ,
-		 	x : openBucketCShadow.x - 50 ,
-		 	y : openBucketCShadow.y + 90
-		 },250, createjs.Ease.getPowInOut(1))
-
-
-		setTimeout(function(){
-			openBucketC.x = closeBucketC.x;
-			openBucketC.y = closeBucketC.y;
-			closeBucketC.alpha = 0;
-			openBucketC.alpha = 1;
-			closeBucketC.gotoAndStop(0);
-			openBucketC.gotoAndStop(0);
-		},500);
-	},150)
-
-
-
-	setTimeout(function(){
-		_callAnim();
-	},1000);
-
 
 }
 
