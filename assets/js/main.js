@@ -405,12 +405,11 @@ function setup() {
 	rightArrowBtnOn = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOn);
 	rightArrowBtnOff = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOff);
 
-	rightArrowBtnOn.scale.set(1.1,1.1)
-	rightArrowBtnOn.x = 936;
-	rightArrowBtnOn.y = 926;
-	// rightArrowBtnOn.alpha = 0;
+	rightArrowBtnOn.scale.set(1,1)
+	rightArrowBtnOn.x = 940;
+	rightArrowBtnOn.y = 932;
 
-	rightArrowBtnOff.scale.set(1.1,1.1)
+	rightArrowBtnOff.scale.set(1,1)
 	rightArrowBtnOff.x = rightArrowBtnOn.x;
 	rightArrowBtnOff.y = rightArrowBtnOn.y;
 	rightArrowBtnOff.interactive   = true;
@@ -420,17 +419,51 @@ function setup() {
 	rightArrowBtnOff.on('mouseup',ArrowHoverOff);
 	rightArrowBtnOff.on('touchstart',ArrowHoverOn);
 	rightArrowBtnOff.on('touchend',ArrowHoverOff);
-	let rightArrowTxt = new PIXI.Text('MAX',{fontFamily : 'Arial', fontSize: 24, fill : 'black', align : 'center'});
+	rightArrowTxt = new PIXI.Text('MAX',{fontFamily : 'Arial', fontSize: 24, fill : 'black',  fontWeight : 'bold' ,align : 'center'});
 	rightArrowTxt.x = rightArrowBtnOn.x + 30;
-	rightArrowTxt.y = rightArrowBtnOn.y + 42;
+	rightArrowTxt.y = rightArrowBtnOn.y + 37;
 
+
+
+
+	leftArrowBtnOn = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOn);
+	leftArrowBtnOff = new PIXI.AnimatedSprite(bucketSheet.arrowBtnOff);
+
+	leftArrowBtnOn.scale.set(1,1)
+	leftArrowBtnOn.x = 296;
+	leftArrowBtnOn.y = 932;
+	leftArrowBtnOn.anchor.set(1);
+	leftArrowBtnOn.rotation = 3.15;
+
+
+	leftArrowBtnOff.scale.set(1,1)
+	leftArrowBtnOff.x = leftArrowBtnOn.x;
+	leftArrowBtnOff.y = leftArrowBtnOn.y;
+	leftArrowBtnOff.rotation = 3.15;
+	leftArrowBtnOff.anchor.set(1);
+	leftArrowBtnOff.interactive   = true;
+	leftArrowBtnOff.buttonMode  = true;
+	leftArrowBtnOff.defaultCursor  = 'pointer';
+	leftArrowBtnOff.on('mousedown',ArrowHoverOn);
+	leftArrowBtnOff.on('mouseup',ArrowHoverOff);
+	leftArrowBtnOff.on('touchstart',ArrowHoverOn);
+	leftArrowBtnOff.on('touchend',ArrowHoverOff);
+	leftArrowTxt = new PIXI.Text('MIN',{fontFamily : 'Arial', fontSize: 24, fill : 'black',  fontWeight : 'bold' ,align : 'center'});
+	leftArrowTxt.x = leftArrowBtnOn.x + 45;
+	leftArrowTxt.y = leftArrowBtnOn.y + 37;
+
+	betTitle = new PIXI.Text('Total Bet',{ fontSize: 35, fill : '#333',  fontWeight : '600' ,align : 'center'});
+	betTitle.y = game.view.height / 1.2;
+	betTitle.x = game.view.width / 3.2;
+	betTitle.alpha = 0.8;
 
 
 	uiContainer = new PIXI.Container();
-	uiContainer.addChild(rightArrowBtnOn,rightArrowBtnOff,rightArrowTxt)
+
+	uiContainer.addChild(rightArrowBtnOn,rightArrowBtnOff,rightArrowTxt , leftArrowBtnOn , leftArrowBtnOff , leftArrowTxt , betTitle)
 
 
-	game.stage.addChild(background,bgGlow,A_Bucket,B_Bucket,C_Bucket,uiContainer);
+	game.stage.addChild(background,bgGlow,uiContainer,A_Bucket,B_Bucket,C_Bucket);
 
 	completeLoad();
 
@@ -511,6 +544,34 @@ function mobileDevicesResize(){
 	openBucketBMove.x = openBucketB.x - 55;
 	openBucketCMove.x = openBucketC.x - 55;
 
+
+	rightArrowBtnOn.y = 129;
+	rightArrowBtnOn.x = 299.8;
+	rightArrowBtnOn.scale.set(0.48,0.48)
+	rightArrowBtnOff.y = 129;
+	rightArrowBtnOff.x = 299.8;
+	rightArrowBtnOff.scale.set(0.48,0.48)
+
+	leftArrowBtnOn.y = 129;
+	leftArrowBtnOn.x = 5.5;
+	leftArrowBtnOn.scale.set(0.48,0.48)
+	leftArrowBtnOff.y = 129;
+	leftArrowBtnOff.x = 5.5;
+	leftArrowBtnOff.scale.set(0.48,0.48)
+
+	rightArrowTxt.x = rightArrowBtnOn.x + 10;
+	rightArrowTxt.style.fontSize = 12;
+	rightArrowTxt.y = rightArrowBtnOn.y + 18;
+
+
+	leftArrowTxt.x = leftArrowBtnOn.x + 20;
+	leftArrowTxt.style.fontSize = 13;
+	leftArrowTxt.y = leftArrowBtnOn.y + 16;
+
+	betTitle.x = 150;
+	betTitle.y = 120;
+	betTitle.style.fontSize = 13;
+	betTitle.style.fill = '#c19358';
 
 
 }

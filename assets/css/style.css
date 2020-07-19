@@ -10,13 +10,11 @@ canvas {
 body {
 	text-align: center;
 	background: url('../images/bodyBg.jpg');
-	background-size: cover;
+	/*background-size: cover;*/
 /*	background-repeat: no-repeat;*/
 	height: 100vh;
 }
 
-
-@media only screen and (max-width: 600px) {
   canvas {
     
     position: absolute;
@@ -27,4 +25,3 @@ body {
         -ms-transform: translate(-50%,-50%);
         transform: translate(-50%,-50%);
   }
-}
